@@ -1,10 +1,12 @@
 from socket import *
 
+SERVER_PORT = 8080
+
 # 1. 클라이언트 소켓 생성 (IPv4, TCP)
 clientSock = socket(AF_INET, SOCK_STREAM)
 
 # 2. 서버에 연결 요청
-clientSock.connect(('127.0.0.1', 8080))  # 또는 'localhost'
+clientSock.connect(('localhost', SERVER_PORT))  # 또는 'localhost'
 print('연결 확인 됐습니다.')
 
 # 3. 서버에 메시지 전송
