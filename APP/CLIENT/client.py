@@ -1,5 +1,6 @@
 from socket import *
 from socket import timeout
+import os
 
 serverName = 'localhost'
 serverPort = 8080
@@ -129,11 +130,18 @@ def CASE7():
     print(response)
     return request, response
 
+import os
+
 def CASE8():
     print("======= CASE8 - PUT 200 OK =======")
     filename = "test.jpeg"
     content_type = "image/jpeg"
-    with open(filename, "rb") as file:
+
+    # client.py 파일 기준으로 FILE 디렉토리 안의 test.jpeg 위치 계산
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    full_path = os.path.join(base_dir, "..", "..", "FILE", filename)
+
+    with open(full_path, "rb") as file:
         file_content = file.read()
 
     request = (
@@ -153,7 +161,12 @@ def CASE9():
     print("======= CASE9 - PUT 400 Bad Request (too large) =======")
     filename = "400_Bad_Request.png"
     content_type = "image/png"
-    with open(filename, "rb") as file:
+
+    # client.py의 위치 기준으로 상위 두 단계 + FILE 디렉토리 접근
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    full_path = os.path.join(base_dir, "..", "..", "FILE", filename)
+
+    with open(full_path, "rb") as file:
         file_content = file.read()
 
     request = (
