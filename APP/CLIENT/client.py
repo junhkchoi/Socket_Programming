@@ -130,11 +130,9 @@ def CASE7():
     print(response)
     return request, response
 
-import os
-
 def CASE8():
     print("======= CASE8 - PUT 200 OK =======")
-    filename = "test.jpeg"
+    filename = "200_OK.png"
     content_type = "image/jpeg"
 
     # client.py 파일 기준으로 FILE 디렉토리 안의 test.jpeg 위치 계산
