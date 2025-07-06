@@ -122,6 +122,7 @@ def PUT(connectionSocket, message, path):
 
 while True:
     connectionSocket, addr = serverSocket.accept()
+    print("=" * 30)
     print("Connection from", addr)
 
     try:
@@ -155,3 +156,4 @@ while True:
         connectionSocket.send(response.encode())
 
     connectionSocket.close()
+    print("=" * 30 + "\n")
