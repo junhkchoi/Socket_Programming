@@ -20,15 +20,6 @@ def request_parser(message):
         print("Error:", e)
         return None, None, None, None
 
-def another_request(connectionSocket):
-    body = "<html><body><h1>405 Method Not Allowed</h1></body></html>"
-    response = (
-        "HTTP/1.1 405 Method Not Allowed\r\n"
-        f"Content-Type: text/html\r\nContent-Length: {len(body)}\r\nConnection: close\r\n\r\n"
-        f"{body}"
-    )
-    connectionSocket.send(response.encode())
-
 def GET(connectionSocket, path):
     if path == "/":
         body = "<html><script>alert('Hello!');</script></html>"
@@ -142,8 +133,6 @@ while True:
             POST(connectionSocket, message, path)
         elif method == "PUT":
             PUT(connectionSocket, message, path)
-        else:
-            another_request(connectionSocket)
 
     except Exception as e:
         print("Error:", e)
